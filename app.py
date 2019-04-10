@@ -72,13 +72,13 @@ def get_playlists():
     playlists = db_session.query(models.Playlist).order_by(
         models.Playlist.name
     )
-    return render_template("playlists.html", playlists=playlists)
+    #return render_template("playlists.html", playlists=playlists)
+    return playlists
 
 @app.route('/longest_tracks', methods = ['GET'])
-def longest_tracks():
+def get_longest_tracks():
     longest_tracks = db_session.query(models.Track)
-    #return type(longest_tracks)
-    return render_template("playlists.html", playlists=longest_tracks)
+
 
 if __name__ == "__main__":
     app.run(debug=False)
