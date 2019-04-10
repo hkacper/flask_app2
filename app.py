@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, abort, render_template, request
+from flask import Flask, abort, render_template, request, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
@@ -72,12 +72,12 @@ def get_playlists():
     playlists = db_session.query(models.Playlist).order_by(
         models.Playlist.name
     )
-    #return render_template("playlists.html", playlists=playlists)
-    return playlists
+    return render_template("playlists.html", playlists=playlists)
 
 @app.route('/longest_tracks', methods = ['GET'])
 def get_longest_tracks():
     longest_tracks = db_session.query(models.Track)
+    return jsonify(longest_tracks)
 
 
 if __name__ == "__main__":
