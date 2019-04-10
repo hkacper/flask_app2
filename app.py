@@ -74,6 +74,10 @@ def get_playlists():
     )
     return render_template("playlists.html", playlists=playlists)
 
+@app.route('/longest_tracks', methods = ['GET'])
+def longest_tracks():
+    longest_tracks = db_session.query(models.Track).order_by(models.Track.milliseconds.amount.desc()).limit(10)
+    return list(longest_tracks)
 
 if __name__ == "__main__":
     app.run(debug=False)
