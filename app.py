@@ -78,7 +78,7 @@ def get_playlists():
 def longest_tracks():
     longest_tracks = db_session.query(models.Track)
     #return type(longest_tracks)
-    return (longest_tracks)
+    return render_template("playlists.html", playlists=longest_tracks)
 
 if __name__ == "__main__":
     app.run(debug=False)
