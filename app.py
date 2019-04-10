@@ -76,7 +76,7 @@ def get_playlists():
 
 @app.route('/longest_tracks', methods = ['GET'])
 def get_longest_tracks():
-    longest_tracks = db_session.query(models.Track)
+    longest_tracks = db_session.query(models.Track).order_by(models.Track.milliseconds)
     return jsonify(longest_tracks)
 
 
